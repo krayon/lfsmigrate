@@ -208,6 +208,85 @@ Date:   2023-10-11 12:36:17 +1100
     Add README
 ```
 
+### Step 4: Add another branch with a new big file
+
+```
+krayon@host:/tmp/lfslocal$ git checkout -b betterbig f87b7ceb3e69034ba18c7606a60da8ef8348f129
+Switched to a new branch 'betterbig'
+
+krayon@host:/tmp/lfslocal$ dd if=/dev/urandom of=random.101mb.dat bs=1024 count=$((1024 * 101))
+103424+0 records in
+103424+0 records out
+105906176 bytes (106 MB, 101 MiB) copied, 0.411487 s, 257 MB/s
+
+krayon@host:/tmp/lfslocal$ git add random.101mb.dat
+
+krayon@host:/tmp/lfslocal$ git commit -S -m 'Better big file'
+[betterbig 5f6e07f] Better big file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+krayon@host:/tmp/lfslocal$ git log --graph --all
+* commit 5f6e07f0e4bd52cd7bd9ae0bc340deb62968fcb8 (HEAD -> betterbig)
+| Author: Krayon <krayon@github.com>
+| Date:   2023-10-11 13:09:51 +1100
+|
+|     Better big file
+|
+| * commit 4d383707d5a963eef367e6d3b573d2a736f9718e (origin/main, main)
+|/  Author: Krayon <krayon@github.com>
+|   Date:   2023-10-11 12:56:18 +1100
+|
+|       Update README
+|
+* commit f87b7ceb3e69034ba18c7606a60da8ef8348f129
+| Author: Krayon <krayon@github.com>
+| Date:   2023-10-11 12:51:17 +1100
+|
+|     Add more Lorem Ipsum texts
+|
+* commit 41d2dc2c883d708a3aa68c09e6b30eeb3dbe1bf0
+| Author: Krayon <krayon@github.com>
+| Date:   2023-10-11 12:50:51 +1100
+|
+|     Update README
+|
+* commit 0cf475dbdbecb3d456a2add2bcf1d00beecac0c6
+| Author: Krayon <krayon@github.com>
+| Date:   2023-10-11 12:48:20 +1100
+|
+|     Add 101mb file
+|
+* commit ec461a8f6dc47471d3a84c365fde39dcf0fd1bf2
+| Author: Krayon <krayon@github.com>
+| Date:   2023-10-11 12:48:08 +1100
+|
+|     Update README
+|
+* commit 2542e4eed2d478d65cb9993a8807bfdbe95b53e5
+| Author: Krayon <krayon@github.com>
+| Date:   2023-10-11 12:42:26 +1100
+|
+|     Add Lorem Ipsum texts
+|
+* commit 0bb90da7d7568f2b9e1e03c53f146e50d6249b81
+  Author: Krayon <krayon@github.com>
+  Date:   2023-10-11 12:36:17 +1100
+
+      Add README
+
+krayon@host:/tmp/lfslocal$ git push origin betterbig:betterbig
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 101.03 MiB | 32.15 MiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+To file:///tmp/lfssource.git
+ * [new branch]      betterbig -> betterbig
+
+krayon@host:/tmp/lfslocal$ git checkout main
+```
+
 ----
 ## Migrate to GitHub (no LFS)
 
