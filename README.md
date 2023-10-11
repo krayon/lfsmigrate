@@ -539,7 +539,7 @@ To file:///tmp/lfssource.git
  + a9982b9...62caadd betterbig -> betterbig (forced update)
 ```
 
-### Push to GitHub
+### Push each branch to GitHub
 
 ```
 krayon@host:/tmp/lfslocal$ git push github main:main
@@ -554,6 +554,9 @@ Total 27 (delta 11), reused 0 (delta 0)
 remote: Resolving deltas: 100% (11/11), done.
 To ssh://github.com/krayon/lfsmigrate.git
  * [new branch]      main -> main
+
+krayon@host:/tmp/lfslocal$ git push github betterbig:betterbig
+...
 ```
 
 ----
