@@ -147,10 +147,96 @@ Date:   2023-10-11 12:36:17 +1100
 
 ### Step 3: Add more basic files
 
+```
+krayon@host:/tmp/lfslocal$ loremipsum >lorem3.txt
 
+krayon@host:/tmp/lfslocal$ loremipsum >lorem4.txt
+
+krayon@host:/tmp/lfslocal$ git add lorem[34].txt
+
+krayon@host:/tmp/lfslocal$ git commit -S -m 'Add more Lorem Ipsum texts'
+[main f87b7ce] Add more Lorem Ipsum texts
+ 2 files changed, 10 insertions(+)
+ create mode 100644 lorem3.txt
+ create mode 100644 lorem4.txt
+
+krayon@host:/tmp/lfslocal$ git push origin
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 3.31 KiB | 3.31 MiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+To file:///tmp/lfssource.git
+   41d2dc2..f87b7ce  main -> main
+
+krayon@host:/tmp/lfslocal$ git log
+commit f87b7ceb3e69034ba18c7606a60da8ef8348f129 (HEAD -> main, origin/main)
+Author: Krayon <krayon@github.com>
+Date:   2023-10-11 12:51:17 +1100
+
+    Add more Lorem Ipsum texts
+
+commit 41d2dc2c883d708a3aa68c09e6b30eeb3dbe1bf0
+Author: Krayon <krayon@github.com>
+Date:   2023-10-11 12:50:51 +1100
+
+    Update README
+
+commit 0cf475dbdbecb3d456a2add2bcf1d00beecac0c6
+Author: Krayon <krayon@github.com>
+Date:   2023-10-11 12:48:20 +1100
+
+    Add 101mb file
+
+commit ec461a8f6dc47471d3a84c365fde39dcf0fd1bf2
+Author: Krayon <krayon@github.com>
+Date:   2023-10-11 12:48:08 +1100
+
+    Update README
+
+commit 2542e4eed2d478d65cb9993a8807bfdbe95b53e5
+Author: Krayon <krayon@github.com>
+Date:   2023-10-11 12:42:26 +1100
+
+    Add Lorem Ipsum texts
+
+commit 0bb90da7d7568f2b9e1e03c53f146e50d6249b81
+Author: Krayon <krayon@github.com>
+Date:   2023-10-11 12:36:17 +1100
+
+    Add README
+```
 
 ----
-## Migrate
+## Migrate to GitHub (no LFS)
+
+Now that we have a repository, lets try to migrate to GitHub:
+
+```
+krayon@host:/tmp/lfslocal$ git push github main:main
+
+Enumerating objects: 20, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (19/19), done.
+Writing objects: 100% (20/20), 101.04 MiB | 1.20 MiB/s, done.
+Total 20 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), done.
+remote: error: Trace: e5082655a8b61dcfa1415583b180fb3f8a3d57423f3a18feaebb64232285365d
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File random.101mb.dat is 101.00 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To ssh://github.com/krayon/lfsmigrate.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'ssh://git@github.com/krayon/lfsmigrate.git'
+```
+
+The operation failed, so we must now resort to moving the large file(s) to LFS.
+
+----
+## Migrate to GitHub (using LFS)
+
 
 
 ----
