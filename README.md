@@ -25,7 +25,11 @@ Cloning into 'lfslocal'...
 
 krayon@host:/tmp/$ cd lfslocal
 
+krayon@host:/tmp/lfslocal$ git remote add github ssh://git@github.com/krayon/lfsmigrate.git
+
 krayon@host:/tmp/$ git remote -v
+github	ssh://git@github.com/krayon/lfsmigrate.git (fetch)
+github	ssh://git@github.com/krayon/lfsmigrate.git (push)
 origin	file:///tmp/lfssource.git/ (fetch)
 origin	file:///tmp/lfssource.git/ (push)
 ```
