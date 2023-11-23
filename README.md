@@ -421,7 +421,7 @@ migrate: Examining commits: 100% (10/10), done.
 ```
 
 This shows us that we have 2 files above 100 megabytes that are in our
-repository. These are our `101mb.dat` file in both the `main' and `betterbig`
+repository. These are our `101mb.dat` file in both the `main` and `betterbig`
 branches.
 
 We think long and hard and decide that these files are critical to building this
